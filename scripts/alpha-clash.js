@@ -9,13 +9,16 @@
 function handleKeybordEvent(event){
     // find the alphabet from the keyboard
    const usersAlphabet= event.key;
-
+ 
 // find the screen alphabet
 const currentAlphabet= document.getElementById('screen-alphabet');
 screenAlphabet=currentAlphabet.innerText.toLocaleLowerCase();
-
+// stop game when press escape button
+if(usersAlphabet==='Escape'){
+    gameOver();
+}
 // console.log("user:", usersAlphabet, "screen:",screenAlphabet)
-
+ 
 if(usersAlphabet===screenAlphabet){
     console.log('u pressed the correct alphabet');
     removeBgById(screenAlphabet)
@@ -29,6 +32,7 @@ if(usersAlphabet===screenAlphabet){
 
     // set new score 
     setElementValueById('current-score',newScore);
+    
    
 }
 else{
