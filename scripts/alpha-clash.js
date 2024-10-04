@@ -9,14 +9,14 @@
 function handleKeybordEvent(event){
     // find the alphabet from the keyboard
    const usersAlphabet= event.key;
- 
+    // stop game when press escape button
+    if(usersAlphabet==='Escape'){
+        gameOver();
+    }
 // find the screen alphabet
 const currentAlphabet= document.getElementById('screen-alphabet');
 screenAlphabet=currentAlphabet.innerText.toLocaleLowerCase();
-// stop game when press escape button
-if(usersAlphabet==='Escape'){
-    gameOver();
-}
+
 // console.log("user:", usersAlphabet, "screen:",screenAlphabet)
  
 if(usersAlphabet===screenAlphabet){
@@ -40,10 +40,10 @@ else{
     const lifeScore= getElementsValueById('life-score');
     updatedScore= lifeScore-1;
     setElementValueById('life-score',updatedScore);
-
+    
        if(updatedScore===0){
         gameOver();
-         removeBgById(screenAlphabet)
+         
        }
    
 }
@@ -69,6 +69,10 @@ function play(){
     // hide the result section
     hideElementById('result-section');
     // unhide playground section
+    // reset the final score and life
+    setElementValueById('current-score',0);
+    setElementValueById('life-score',5);
+
     unhideElementById('playground-section');
     continueGame()
 }
@@ -82,11 +86,10 @@ function gameOver(){
    const displayFinalScore=document.getElementById('finel-score');
   displayFinalScore.innerText=finalScore;
 
-    // reset the final score and life
-    setElementValueById('current-score',0);
-    setElementValueById('life-score',5);
+    
+   const currentAlphabet=document.getElementById('screen-alphabet').innerText;
 
-   
+   removeBgById(currentAlphabet);
 
 
 }
