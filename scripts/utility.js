@@ -1,4 +1,4 @@
-function hideElelmentById(id){
+function hideElementById(id){
     const element=document.getElementById(id);
     element.classList.add('hidden');
 }
@@ -16,6 +16,28 @@ function removeBgById(elementId){
     const element=document.getElementById(elementId);
     element.classList.remove('bg-orange-400');
 }
+
+function getElementsValueById(elementId){
+    const element=document.getElementById(elementId);
+    const elementText=element.innerText;
+    const value = parseInt(elementText);
+    return value;
+}
+
+function setElementValueById(elementId,value){
+    const element=document.getElementById(elementId);
+     element.innerText=value;
+}
+
+
+function getElementTextById(elementId){
+    const element=document.getElementById(elementId);
+    text= element.innerText;
+    return text;
+}
+
+
+
 // generate random alphabet
 
 function generteRandomAlphabet(){

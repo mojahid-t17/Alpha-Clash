@@ -20,9 +20,28 @@ if(usersAlphabet===screenAlphabet){
     console.log('u pressed the correct alphabet');
     removeBgById(screenAlphabet)
     continueGame()
+
+     const currentScore=getElementsValueById('current-score');
+    //  console.log(currentScore)      
+
+    // ***********set the new Score**********
+    const newScore=currentScore+1;
+
+    // set new score 
+    setElementValueById('current-score',newScore);
+   
 }
 else{
-    console.log('wrong alphabet')
+    // console.log('wrong alphabet')
+    const lifeScore= getElementsValueById('life-score');
+    updatedScore= lifeScore-1;
+    setElementValueById('life-score',updatedScore);
+
+       if(updatedScore===0){
+        gameOver();
+         removeBgById(screenAlphabet)
+       }
+   
 }
 
 }
@@ -42,9 +61,28 @@ function continueGame(){
 
 function play(){
     // hide home section when clicked play button
-    hideElelmentById('home-section');
+    hideElementById('home-section');
+    // hide the result section
+    hideElementById('result-section');
     // unhide playground section
     unhideElementById('playground-section');
     continueGame()
 }
 
+
+function gameOver(){
+    hideElementById('playground-section');
+    unhideElementById('result-section');
+      // set the final score
+   const finalScore=getElementTextById('current-score');
+   const displayFinalScore=document.getElementById('finel-score');
+  displayFinalScore.innerText=finalScore;
+
+    // reset the final score and life
+    setElementValueById('current-score',0);
+    setElementValueById('life-score',5);
+
+   
+
+
+}
